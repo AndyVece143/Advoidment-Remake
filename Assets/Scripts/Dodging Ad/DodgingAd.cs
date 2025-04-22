@@ -118,19 +118,6 @@ public class DodgingAd : Advertisement
 
                 if (enemies[i])
                 {
-                    //Makes the enemy offscreen invisible
-                    if (enemies[i].transform.localPosition.y > 5.375f)
-                    {
-                        SpriteRenderer sprender = enemies[i].GetComponent<SpriteRenderer>();
-                        sprender.enabled = false;
-                    }
-                    if (enemies[i].transform.localPosition.y <= 5.375f)
-                    {
-                        SpriteRenderer sprender = enemies[i].GetComponent<SpriteRenderer>();
-                        sprender.enabled = true;
-                    }
-
-
                     if (player.GetComponent<Collider2D>().bounds.Intersects(enemies[i].GetComponent<Collider2D>().bounds) && isDead == false)
                     {
                         Debug.Log("OW!");
