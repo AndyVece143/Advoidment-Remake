@@ -54,6 +54,9 @@ public class SpaceAd : Advertisement
         LaserMovement();
     }
 
+    /// <summary>
+    /// Rotates the player in the direction of the mouse and can shoot in that direction
+    /// </summary>
     private void PlayerMovement()
     {
         if (isDead == false)
@@ -74,6 +77,10 @@ public class SpaceAd : Advertisement
         }
     }
 
+    /// <summary>
+    /// Spawns the laser object
+    /// </summary>
+    /// <param name="direction">The direction the player is facing</param>
     private void SpawnLaser(Vector3 direction)
     {
         GameObject newLaser = Instantiate(laser);
@@ -85,6 +92,9 @@ public class SpaceAd : Advertisement
         laserList.Add(newLaser);
     }
 
+    /// <summary>
+    /// Allows the lasers to move in a straight line, and destroys them off screen
+    /// </summary>
     private void LaserMovement()
     {
         if (isDead == false)
@@ -102,11 +112,13 @@ public class SpaceAd : Advertisement
         }
     }
 
+    /// <summary>
+    /// Spawns a certain number of asteroids
+    /// </summary>
     private void SpawnAsteroids()
     {
         asteroids.Clear();
         Debug.Log("New droids");
-
 
         asteroids = new List<GameObject>(asteroidNumber);
 
@@ -118,11 +130,10 @@ public class SpaceAd : Advertisement
             newAsteroid.transform.localPosition = Vector3.zero;
             newAsteroid.GetComponent<SpriteRenderer>().enabled = true;
 
-            float xValue = Random.Range(-4.0f * scale.x, 4.0f * scale.y);
-            float yValue = Random.Range(-4.0f * scale.x, 4.0f * scale.y);
+            List<float> coordinates = GetCoordinates(scale);
 
             newAsteroid.transform.position = new Vector2(
-                transform.position.x + xValue, transform.position.y + yValue);
+                transform.position.x + coordinates[0], transform.position.y + coordinates[1]);
 
             Vector3 playerDirection =  player.transform.position - newAsteroid.transform.position;
 
@@ -135,6 +146,35 @@ public class SpaceAd : Advertisement
         ColliderMethod(true);
     }
 
+    /// <summary>
+    /// Gets x and y values, and returns them in a list of floats
+    /// </summary>
+    /// <param name="scale">The current scale of the game ad</param>
+    /// <returns>A list of 2 floats</returns>
+    private List<float> GetCoordinates(Vector3 scale)
+    {
+        float xValue = Random.Range(-4.0f * scale.x, 4.0f * scale.x);
+        float yValue =  Random.Range(-4.0f * scale.y, 4.0f * scale.y);
+
+        if (xValue > -1.5f * scale.x && xValue < 1.5f * scale.x && yValue > -1.5f * scale.y && yValue < 1.5f * scale.y)
+        {
+            return GetCoordinates(scale);
+        }
+
+        else
+        {
+            List<float> coordinates = new List<float>();
+
+            coordinates.Add(xValue);
+            coordinates.Add(yValue);
+
+            return coordinates;
+        }
+    }
+
+    /// <summary>
+    /// Asteroids rotate towards the player, and then slowly move towards it. Asteroid/laser collision is here
+    /// </summary>
     private void AsteroidMovement()
     {
         if (asteroids.Count > 0)
@@ -178,6 +218,10 @@ public class SpaceAd : Advertisement
         }
     }
 
+    /// <summary>
+    /// Enables and disables colliders of lasers and asteroids
+    /// </summary>
+    /// <param name="enable">Determines if we are enabling or disabling colliders</param>
     private void ColliderMethod(bool enable)
     {
         for (int i = 0; i < asteroids.Count; i++)
@@ -210,6 +254,9 @@ public class SpaceAd : Advertisement
         Instantiate(gameObject);
     }
 
+    /// <summary>
+    /// Deletes all lasers and asteroids, and begins to spawn more
+    /// </summary>
     private void DeleteEverything()
     {
         for (int i = 0; i < asteroids.Count; i++)
@@ -226,6 +273,7 @@ public class SpaceAd : Advertisement
 
         SpawnAsteroids();
     }
+
     protected override IEnumerator waiter()
     {
         winScreen.GetComponent<SpriteRenderer>().enabled = true;
