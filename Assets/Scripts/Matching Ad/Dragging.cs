@@ -18,7 +18,7 @@ public class Dragging : MonoBehaviour
     void Update()
     {
         scale = transform.localScale;
-        if (isDragging && done == false)
+        if (isDragging)
         {
             dragged = true;
             transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition) + offset;
@@ -47,6 +47,7 @@ public class Dragging : MonoBehaviour
 
     private void OnMouseDown()
     {
+        Debug.Log("Clicking");
         offset = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
         isDragging = true;
     }
@@ -54,5 +55,10 @@ public class Dragging : MonoBehaviour
     private void OnMouseUp()
     {
         isDragging = false;
+    }
+
+    private void OnMouseEnter()
+    {
+        Debug.Log("Hovering");
     }
 }

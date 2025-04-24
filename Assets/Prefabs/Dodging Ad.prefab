@@ -496,7 +496,7 @@ MonoBehaviour:
   enemies: []
   enemyNumber: 5
   winScreen: {fileID: 7964239062158482639}
-  enemySpeed: -10
+  enemySpeed: -5
 --- !u!1 &7964239062158482639
 GameObject:
   m_ObjectHideFlags: 0
