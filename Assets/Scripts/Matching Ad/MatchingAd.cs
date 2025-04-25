@@ -40,6 +40,11 @@ public class MatchingAd : Advertisement
 
         CheckCollision();
         CheckCompletion();
+
+        if (movingAd)
+        {
+            MoveAd();
+        }
     }
 
     /// <summary>
@@ -49,7 +54,7 @@ public class MatchingAd : Advertisement
     {
         for (int i = 0; i < boxes.Count; i++)
         {
-            boxes[i].transform.position = new Vector3(Random.Range(-4.0f * scale.x, 4.0f * scale.x), Random.Range(-4.0f * scale.y, 4.0f * scale.y), 0);
+            //boxes[i].transform.position = new Vector3(Random.Range(-4.0f * scale.x, 4.0f * scale.x), Random.Range(-4.0f * scale.y, 4.0f * scale.y), 0);
             targets[i].transform.position = new Vector3(Random.Range(-4.0f * scale.x, 4.0f * scale.x), Random.Range(-4.0f * scale.y, 4.0f * scale.y), 0);
         }
     }

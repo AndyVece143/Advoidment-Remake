@@ -52,6 +52,11 @@ public class SpaceAd : Advertisement
         }
 
         LaserMovement();
+
+        if (movingAd)
+        {
+            MoveAd();
+        }
     }
 
     /// <summary>

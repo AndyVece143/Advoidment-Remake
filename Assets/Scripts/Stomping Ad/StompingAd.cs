@@ -49,7 +49,12 @@ public class StompingAd : Advertisement
         {
             EnemyMovement();
         }
-        
+
+        if (movingAd)
+        {
+            MoveAd();
+        }
+
     }
 
     private void PlayerMovement()
@@ -143,13 +148,13 @@ public class StompingAd : Advertisement
 
         if (enemyGoingDown)
         {
-            enemy.transform.position += new Vector3(0, -speed * 2 * scale.y, 0);
+            enemy.transform.position += new Vector3(0, -speed * scale.y, 0);
 
             if (enemy.GetComponent<Collider2D>().bounds.Intersects(floor.GetComponent<Collider2D>().bounds))
             {
-                enemy.transform.position = new Vector3(enemy.transform.position.x, -1.75f * scale.y, 0);
+                enemy.transform.position = new Vector3(enemy.transform.position.x, floor.transform.position.y + 0.75f * scale.y, 0);
                 enemyGoingDown = false;
-                
+
             }
         }
 

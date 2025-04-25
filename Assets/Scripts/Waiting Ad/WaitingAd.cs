@@ -41,6 +41,12 @@ public class WaitingAd : Advertisement
         {
             StartCoroutine(waiter());
         }
+
+        if (movingAd)
+        {
+            MoveAd();
+        }
+
     }
 
     public override void CreateAd()

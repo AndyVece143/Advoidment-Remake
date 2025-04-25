@@ -16,6 +16,7 @@ public class DodgingAd : Advertisement
     private bool isDead = false;
     public GameObject winScreen;
     public int enemySpeed;
+    public GameObject referencePoint;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -43,9 +44,15 @@ public class DodgingAd : Advertisement
         }
 
         scale = transform.localScale;
+        originalPosition = referencePoint.transform.position;
 
         PlayerMovement();
         EnemyMovement();
+
+        if (movingAd)
+        {
+            MoveAd();
+        }
     }
 
     /// <summary>
@@ -66,7 +73,6 @@ public class DodgingAd : Advertisement
                 player.transform.position = new Vector3(originalPosition.x + (-2.5f * scale.x), player.transform.position.y, 0);
             }
         }
-
     }
 
     private void SpawnEnemies()

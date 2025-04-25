@@ -48,6 +48,11 @@ public class ShootingAd : Advertisement
             LaserMovement();
             EnemyCollision();
         }
+
+        if (movingAd)
+        {
+            MoveAd();
+        }
     }
 
     /// <summary>
