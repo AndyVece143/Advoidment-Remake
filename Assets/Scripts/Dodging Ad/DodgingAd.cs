@@ -33,7 +33,7 @@ public class DodgingAd : Advertisement
     void Update()
     {
         //Scale up at the beginning
-        if (transform.localScale.x <= 1 && isAdOver == false)
+        if (transform.localScale.x <= 1 && isAdOver == false && beginScale == false)
         {
             ChangeScale(true);
         }
@@ -52,6 +52,11 @@ public class DodgingAd : Advertisement
         if (movingAd)
         {
             MoveAd();
+        }
+
+        if (scalingAd)
+        {
+            ScaleAd();
         }
     }
 
@@ -152,6 +157,8 @@ public class DodgingAd : Advertisement
     protected override IEnumerator waiter()
     {
         winScreen.GetComponent<SpriteRenderer>().enabled = true;
+        scalingAd = false;
+        movingAd = false;
         yield return new WaitForSeconds(1);
         isAdOver = true;
 

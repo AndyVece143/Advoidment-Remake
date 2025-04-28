@@ -32,7 +32,7 @@ public class StompingAd : Advertisement
     void Update()
     {
         //Scale up at the beginning
-        if (transform.localScale.x <= 1 && isAdOver == false)
+        if (transform.localScale.x <= 1 && isAdOver == false && beginScale == false)
         {
             ChangeScale(true);
         }
@@ -53,6 +53,11 @@ public class StompingAd : Advertisement
         if (movingAd)
         {
             MoveAd();
+        }
+
+        if (scalingAd)
+        {
+            ScaleAd();
         }
 
     }
@@ -176,6 +181,8 @@ public class StompingAd : Advertisement
     }
     protected override IEnumerator waiter()
     {
+        movingAd = false;
+        scalingAd = false;
         yield return new WaitForSeconds(1);
         isAdOver = true;
 

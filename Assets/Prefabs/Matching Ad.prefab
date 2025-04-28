@@ -151,6 +151,7 @@ MonoBehaviour:
   dragged: 0
   done: 0
   referencePoint: {fileID: 6072361719734252141}
+  advertisement: {fileID: 8947518353359816142}
 --- !u!1 &882143655046290423
 GameObject:
   m_ObjectHideFlags: 0
@@ -295,6 +296,10 @@ MonoBehaviour:
   ySpeed: 0
   bounds: []
   movingAd: 0
+  scalingAd: 0
+  scaleSpeedX: 0
+  scaleSpeedY: 0
+  beginScale: 0
   boxes:
   - {fileID: 6246871854718907575}
   - {fileID: 3062367854694565263}
@@ -500,6 +505,7 @@ MonoBehaviour:
   dragged: 0
   done: 0
   referencePoint: {fileID: 6072361719734252141}
+  advertisement: {fileID: 8947518353359816142}
 --- !u!1 &3998425533767622543
 GameObject:
   m_ObjectHideFlags: 0
@@ -1006,6 +1012,7 @@ MonoBehaviour:
   dragged: 0
   done: 0
   referencePoint: {fileID: 6072361719734252141}
+  advertisement: {fileID: 8947518353359816142}
 --- !u!1 &6636729667713864231
 GameObject:
   m_ObjectHideFlags: 0

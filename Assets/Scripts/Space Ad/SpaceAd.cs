@@ -34,7 +34,7 @@ public class SpaceAd : Advertisement
     void Update()
     {
         //Scale up at the beginning
-        if (transform.localScale.x <= 1 && isAdOver == false)
+        if (transform.localScale.x <= 1 && isAdOver == false && beginScale == false)
         {
             ChangeScale(true);
         }
@@ -56,6 +56,11 @@ public class SpaceAd : Advertisement
         if (movingAd)
         {
             MoveAd();
+        }
+
+        if (scalingAd)
+        {
+            ScaleAd();
         }
     }
 
@@ -282,6 +287,8 @@ public class SpaceAd : Advertisement
     protected override IEnumerator waiter()
     {
         winScreen.GetComponent<SpriteRenderer>().enabled = true;
+        movingAd = false;
+        scalingAd = false;
         yield return new WaitForSeconds(1);
         isAdOver = true;
 

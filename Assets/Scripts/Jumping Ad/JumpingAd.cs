@@ -41,7 +41,7 @@ public class JumpingAd : Advertisement
     void Update()
     {
         //Scale up at the beginning
-        if (transform.localScale.x <= 1 && isAdOver == false)
+        if (transform.localScale.x <= 1 && isAdOver == false && beginScale == false)
         {
             ChangeScale(true);
         }
@@ -61,6 +61,11 @@ public class JumpingAd : Advertisement
         if (movingAd)
         {
             MoveAd();
+        }
+
+        if (scalingAd)
+        {
+            ScaleAd();
         }
     }
     private void PlayerMovement()
@@ -170,6 +175,8 @@ public class JumpingAd : Advertisement
     protected override IEnumerator waiter()
     {
         winScreen.GetComponent<SpriteRenderer>().enabled = true;
+        scalingAd = false;
+        movingAd = false;
         yield return new WaitForSeconds(1);
         isAdOver = true;
 

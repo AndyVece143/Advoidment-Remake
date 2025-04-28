@@ -12,6 +12,11 @@ public abstract class Advertisement : MonoBehaviour
     private bool TopBottomCheck = false;
     private bool LeftRightCheck = false;
     public bool movingAd;
+    public bool scalingAd;
+    public float scaleSpeedX;
+    public float scaleSpeedY;
+    public bool beginScale = false;
+    private bool changeScale = false;
     
     void Awake()
     {
@@ -52,6 +57,40 @@ public abstract class Advertisement : MonoBehaviour
         BoundsCollision();
     }
 
+    public void ScaleAd()
+    {
+        StartCoroutine(ScaleWaitBeginning());
+
+        if (beginScale == true)
+        {
+            transform.localScale += new Vector3(scaleSpeedX, scaleSpeedY, 0);
+            ChangeScale();
+        }
+    }
+
+    private void ChangeScale()
+    {
+        if (transform.localScale.x >= 1 && changeScale == false && scaleSpeedX > 0)
+        {
+            scaleSpeedX *= -1;
+        }
+
+        if (transform.localScale.x <= 0.1f && changeScale == false && scaleSpeedX < 0)
+        {
+            scaleSpeedX *= -1;
+        }
+
+        if (transform.localScale.y >= 1 && changeScale == false && scaleSpeedY > 0)
+        {
+            scaleSpeedY *= -1;
+        }
+
+        if (transform.localScale.y <= 0.1f && changeScale == false && scaleSpeedY < 0)
+        {
+            scaleSpeedY *= -1;
+        }
+    }
+
     private void BoundsCollision()
     {
         for (int i = 0; i < bounds.Count; i++)
@@ -69,11 +108,13 @@ public abstract class Advertisement : MonoBehaviour
         if (wall.tag == "LeftRightBounds" && LeftRightCheck == false)
         {
             xSpeed *= -1;
+            scaleSpeedX *= -1;
             StartCoroutine(CollisionWait(wall.tag));
         }
         if (wall.tag == "TopBottomBounds" && TopBottomCheck == false)
         {
             ySpeed *= -1;
+            scaleSpeedY *= -1;
             StartCoroutine(CollisionWait(wall.tag));
         }
     }
@@ -83,17 +124,22 @@ public abstract class Advertisement : MonoBehaviour
         if (tag == "LeftRightBounds")
         {
             LeftRightCheck = true;
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(1f);
             LeftRightCheck = false;
         }
 
         else
         {
             TopBottomCheck = true;
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(1f);
             TopBottomCheck = false;
         }
-        
+    }
+
+    private IEnumerator ScaleWaitBeginning()
+    {
+        yield return new WaitForSeconds(1.0f);
+        beginScale = true;
     }
 
     protected abstract IEnumerator waiter();

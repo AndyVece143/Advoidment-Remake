@@ -30,7 +30,7 @@ public class ShootingAd : Advertisement
     void Update()
     {
         //Scale up at the beginning
-        if (transform.localScale.x <= 1 && isAdOver == false)
+        if (transform.localScale.x <= 1 && isAdOver == false && beginScale == false)
         {
             ChangeScale(true);
         }
@@ -52,6 +52,11 @@ public class ShootingAd : Advertisement
         if (movingAd)
         {
             MoveAd();
+        }
+
+        if (scalingAd)
+        {
+            ScaleAd();
         }
     }
 
@@ -155,6 +160,8 @@ public class ShootingAd : Advertisement
     }
     protected override IEnumerator waiter()
     {
+        movingAd = false;
+        scalingAd = false;
         yield return new WaitForSeconds(1);
         isAdOver = true;
 
