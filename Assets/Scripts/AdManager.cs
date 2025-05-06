@@ -11,6 +11,8 @@ public class AdManager : MonoBehaviour
     public List<Advertisement> ads = new List<Advertisement>();
     public List<Advertisement> activeAds = new List<Advertisement>();
 
+    public Clicking clicking;
+
     public int maxAds = 1;
 
     public bool gracePeriod = false;
@@ -46,16 +48,48 @@ public class AdManager : MonoBehaviour
 
     private void CreateAd()
     {
-        Advertisement ad = Instantiate(ads[RandomNumber()]);
+        Advertisement ad = Instantiate(ads[RandomNumberAd()]);
+
+        //Difficulty up, 50% chance of moving ad
+        if (clicking.click >= 20 && clicking.click < 100 && RandomNumber(0,2) == 1)
+        {
+            ad.movingAd = true;
+            ad.xSpeed = 0.0005f;
+        }
+
+        //Difficulty up 100% chance of moving ad
+        if (clicking.click >= 100)
+        {
+            ad.movingAd = true;
+            ad.xSpeed = Random.Range(0.001f, 0.003f);
+
+            //50% chance of negative values
+            if (RandomNumber(0,2) == 1)
+            {
+                ad.xSpeed *= -1;
+            }
+            if (RandomNumber(0, 2) == 1)
+            {
+                ad.ySpeed *= -1;
+            }
+            ad.ySpeed = Random.Range(0.0005f, 0.001f);
+        }
+
+        //Difficulty up, 50% chance of scaling ad
         activeAds.Add(ad);
     }
 
-    private int RandomNumber()
+    private int RandomNumber(int lower, int higher)
+    {
+        return rand.Next(lower, higher);
+    }
+
+    private int RandomNumberAd()
     {
         int i = rand.Next(0, ads.Count);
         if (i == previousNumber)
         {
-            return RandomNumber();
+            return RandomNumberAd();
         }
 
         else
@@ -68,7 +102,7 @@ public class AdManager : MonoBehaviour
     private IEnumerator GracePeriod()
     {
         gracePeriod = true;
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(RandomNumber(3, 6));
         gracePeriod = false;
     }
 }

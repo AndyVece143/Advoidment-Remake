@@ -26,8 +26,6 @@ public abstract class Advertisement : MonoBehaviour
         bounds.Add(GameObject.Find("LeftBounds"));
         bounds.Add(GameObject.Find("TopBounds"));
         bounds.Add(GameObject.Find("BottomBounds"));
-        xSpeed = 0.001f;
-        ySpeed = 0.001f;
     }
 
     // Update is called once per frame
