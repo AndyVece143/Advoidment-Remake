@@ -17,6 +17,7 @@ public abstract class Advertisement : MonoBehaviour
     public float scaleSpeedY;
     public bool beginScale = false;
     private bool changeScale = false;
+    public bool beginAd = false;
     
     void Awake()
     {

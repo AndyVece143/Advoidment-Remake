@@ -16,6 +16,7 @@ public class ShootingAd : Advertisement
     public GameObject enemy;
     public List<GameObject> enemies;
     private bool canShoot = true;
+    public GameObject instructions;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -24,6 +25,8 @@ public class ShootingAd : Advertisement
         transform.localScale = scale;
         laser.GetComponent<SpriteRenderer>().enabled = false;
         laserList = new List<GameObject>();
+
+        StartCoroutine(waitbegin());
     }
 
     // Update is called once per frame
@@ -41,22 +44,27 @@ public class ShootingAd : Advertisement
         }
         scale = transform.localScale;
 
-        PlayerMovement();
 
-        if (laserList.Count > 0)
+        if (beginAd)
         {
-            LaserMovement();
-            EnemyCollision();
-        }
+            Destroy(instructions);
+            PlayerMovement();
 
-        if (movingAd)
-        {
-            MoveAd();
-        }
+            if (laserList.Count > 0)
+            {
+                LaserMovement();
+                EnemyCollision();
+            }
 
-        if (scalingAd)
-        {
-            ScaleAd();
+            if (movingAd)
+            {
+                MoveAd();
+            }
+
+            if (scalingAd)
+            {
+                ScaleAd();
+            }
         }
     }
 
@@ -65,29 +73,32 @@ public class ShootingAd : Advertisement
     /// </summary>
     private void PlayerMovement()
     {
-        if (facingLeft)
+        if (enemies.Count != 0)
         {
-            player.transform.position += new Vector3(-speed * scale.x, 0, 0);
-        }
+            if (facingLeft)
+            {
+                player.transform.position += new Vector3(-speed * scale.x, 0, 0);
+            }
 
-        if (facingLeft == false)
-        {
-            player.transform.position += new Vector3(speed * scale.x, 0, 0);
-        }
+            if (facingLeft == false)
+            {
+                player.transform.position += new Vector3(speed * scale.x, 0, 0);
+            }
 
-        if (player.GetComponent<Collider2D>().bounds.Intersects(leftWall.GetComponent<Collider2D>().bounds))
-        {
-            facingLeft = false;
-        }
+            if (player.GetComponent<Collider2D>().bounds.Intersects(leftWall.GetComponent<Collider2D>().bounds))
+            {
+                facingLeft = false;
+            }
 
-        if (player.GetComponent<Collider2D>().bounds.Intersects(rightWall.GetComponent<Collider2D>().bounds))
-        {
-            facingLeft = true;
-        }
-        if (Input.GetMouseButtonDown(0) && canShoot == true)
-        {
-            SpawnLaser();
-            StartCoroutine(waiterShoot());
+            if (player.GetComponent<Collider2D>().bounds.Intersects(rightWall.GetComponent<Collider2D>().bounds))
+            {
+                facingLeft = true;
+            }
+            if (Input.GetMouseButtonDown(0) && canShoot == true)
+            {
+                SpawnLaser();
+                StartCoroutine(waiterShoot());
+            }
         }
     }
 
@@ -158,6 +169,14 @@ public class ShootingAd : Advertisement
     {
         Instantiate(gameObject);
     }
+
+    private IEnumerator waitbegin()
+    {
+        yield return new WaitForSeconds(1.5f);
+        beginAd = true;
+        //SpawnEnemies();
+    }
+
     protected override IEnumerator waiter()
     {
         movingAd = false;

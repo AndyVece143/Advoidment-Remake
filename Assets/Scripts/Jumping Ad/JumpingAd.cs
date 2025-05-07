@@ -25,6 +25,7 @@ public class JumpingAd : Advertisement
     private Vector3 scale;
 
     public GameObject winScreen;
+    public GameObject instructions;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -34,7 +35,7 @@ public class JumpingAd : Advertisement
         jumpForce = 12f * (scale.y / 2.0f);
         winScreen.GetComponent<SpriteRenderer>().enabled = false;
 
-        SpawnEnemies();
+        StartCoroutine(waitbegin());
     }
 
     // Update is called once per frame
@@ -55,17 +56,21 @@ public class JumpingAd : Advertisement
         gravity = -9.8f * scale.y;
         jumpForce = 12f * (scale.y / 2.0f);
 
-        PlayerMovement();
-        EnemyMovement();
-
-        if (movingAd)
+        if (beginAd)
         {
-            MoveAd();
-        }
+            Destroy(instructions);
+            PlayerMovement();
+            EnemyMovement();
 
-        if (scalingAd)
-        {
-            ScaleAd();
+            if (movingAd)
+            {
+                MoveAd();
+            }
+
+            if (scalingAd)
+            {
+                ScaleAd();
+            }
         }
     }
     private void PlayerMovement()
@@ -169,6 +174,13 @@ public class JumpingAd : Advertisement
         {
             Destroy(enemies[i]);
         }
+        SpawnEnemies();
+    }
+
+    private IEnumerator waitbegin()
+    {
+        yield return new WaitForSeconds(1.5f);
+        beginAd = true;
         SpawnEnemies();
     }
 

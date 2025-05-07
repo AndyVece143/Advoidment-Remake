@@ -15,6 +15,7 @@ public class SpaceAd : Advertisement
     public GameObject winScreen;
 
     public bool isDead = false;
+    public GameObject instructions;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -27,7 +28,7 @@ public class SpaceAd : Advertisement
         transform.localScale = scale;
         laserList = new List<GameObject>();
 
-        SpawnAsteroids();
+        StartCoroutine(waitbegin());
     }
 
     // Update is called once per frame
@@ -45,22 +46,26 @@ public class SpaceAd : Advertisement
         }
         scale = transform.localScale;
 
-        PlayerMovement();
-        if (isDead == false)
+        if (beginAd)
         {
-            AsteroidMovement();
-        }
+            Destroy(instructions);
+            PlayerMovement();
+            if (isDead == false)
+            {
+                AsteroidMovement();
+            }
 
-        LaserMovement();
+            LaserMovement();
 
-        if (movingAd)
-        {
-            MoveAd();
-        }
+            if (movingAd)
+            {
+                MoveAd();
+            }
 
-        if (scalingAd)
-        {
-            ScaleAd();
+            if (scalingAd)
+            {
+                ScaleAd();
+            }
         }
     }
 
@@ -281,6 +286,13 @@ public class SpaceAd : Advertisement
         laserList.Clear();
         laserList = new List<GameObject>();
 
+        SpawnAsteroids();
+    }
+
+    private IEnumerator waitbegin()
+    {
+        yield return new WaitForSeconds(1.5f);
+        beginAd = true;
         SpawnAsteroids();
     }
 

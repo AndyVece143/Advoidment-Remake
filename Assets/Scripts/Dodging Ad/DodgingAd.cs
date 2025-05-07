@@ -17,6 +17,7 @@ public class DodgingAd : Advertisement
     public GameObject winScreen;
     public int enemySpeed;
     public GameObject referencePoint;
+    public GameObject instructions;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -26,7 +27,7 @@ public class DodgingAd : Advertisement
         originalPosition = player.transform.position;
         winScreen.GetComponent<SpriteRenderer>().enabled = false;
 
-        SpawnEnemies();
+        StartCoroutine(waitbegin());
     }
 
     // Update is called once per frame
@@ -46,17 +47,21 @@ public class DodgingAd : Advertisement
         scale = transform.localScale;
         originalPosition = referencePoint.transform.position;
 
-        PlayerMovement();
-        EnemyMovement();
-
-        if (movingAd)
+        if (beginAd)
         {
-            MoveAd();
-        }
+            Destroy(instructions);
+            PlayerMovement();
+            EnemyMovement();
 
-        if (scalingAd)
-        {
-            ScaleAd();
+            if (movingAd)
+            {
+                MoveAd();
+            }
+
+            if (scalingAd)
+            {
+                ScaleAd();
+            }
         }
     }
 
@@ -154,6 +159,13 @@ public class DodgingAd : Advertisement
     {
         Instantiate(gameObject);
     }
+    private IEnumerator waitbegin()
+    {
+        yield return new WaitForSeconds(1.5f);
+        beginAd = true;
+        SpawnEnemies();
+    }
+
     protected override IEnumerator waiter()
     {
         winScreen.GetComponent<SpriteRenderer>().enabled = true;

@@ -20,12 +20,15 @@ public class StompingAd : Advertisement
     private bool enemyGoingUp = false;
     private bool enemyGoingDown = false;
     private bool enemyJump = false;
+
+    public GameObject instructions;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         scale = new Vector3(0.1f, 0.1f, 0.1f);
         transform.localScale = scale;
+        StartCoroutine(waitbegin());
     }
 
     // Update is called once per frame
@@ -43,23 +46,26 @@ public class StompingAd : Advertisement
         }
         scale = transform.localScale;
 
-        PlayerMovement();
-
-        if (enemy)
+        if (beginAd)
         {
-            EnemyMovement();
-        }
+            Destroy(instructions);
+            PlayerMovement();
 
-        if (movingAd)
-        {
-            MoveAd();
-        }
+            if (enemy)
+            {
+                EnemyMovement();
+            }
 
-        if (scalingAd)
-        {
-            ScaleAd();
-        }
+            if (movingAd)
+            {
+                MoveAd();
+            }
 
+            if (scalingAd)
+            {
+                ScaleAd();
+            }
+        }
     }
 
     private void PlayerMovement()
@@ -178,6 +184,12 @@ public class StompingAd : Advertisement
     public override void CreateAd()
     {
         Instantiate(gameObject);
+    }
+
+    private IEnumerator waitbegin()
+    {
+        yield return new WaitForSeconds(1.5f);
+        beginAd = true;
     }
     protected override IEnumerator waiter()
     {

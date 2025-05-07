@@ -12,6 +12,8 @@ public class MatchingAd : Advertisement
     private List<bool> complete;
     private bool isAdDone = false;
 
+    public GameObject instructions;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -19,7 +21,7 @@ public class MatchingAd : Advertisement
         transform.localScale = scale;
 
         complete = new List<bool> { false, false, false };
-        ChangeLocations();
+        StartCoroutine(waitbegin());
     }
 
     // Update is called once per frame
@@ -38,17 +40,21 @@ public class MatchingAd : Advertisement
 
         scale = transform.localScale;
 
-        CheckCollision();
-        CheckCompletion();
-
-        if (movingAd)
+        if (beginAd)
         {
-            MoveAd();
-        }
+            Destroy(instructions);
+            CheckCollision();
+            CheckCompletion();
 
-        if (scalingAd)
-        {
-            ScaleAd();
+            if (movingAd)
+            {
+                MoveAd();
+            }
+
+            if (scalingAd)
+            {
+                ScaleAd();
+            }
         }
     }
 
@@ -107,6 +113,13 @@ public class MatchingAd : Advertisement
     public override void CreateAd()
     {
         Instantiate(gameObject);
+    }
+
+    private IEnumerator waitbegin()
+    {
+        yield return new WaitForSeconds(1.5f);
+        beginAd = true;
+        ChangeLocations();
     }
     protected override IEnumerator waiter()
     {

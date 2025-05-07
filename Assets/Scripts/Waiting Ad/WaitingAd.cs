@@ -8,6 +8,8 @@ public class WaitingAd : Advertisement
     private bool isAdOver;
     private Vector3 scale;
 
+    public GameObject instructions;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -15,11 +17,7 @@ public class WaitingAd : Advertisement
         scale = new Vector3(0.1f, 0.1f, 0.1f);
         transform.localScale = scale;
 
-        float[] pointsX = { -2.5f * scale.x, 2.5f * scale.x };
-        float[] pointsY = { -4f * scale.y, 4f * scale.y };
-
-        Vector3 originalPosition = closeButton.transform.position;
-        closeButton.transform.position = new Vector3(originalPosition.x + pointsX[Random.Range(0, 2)], originalPosition.y + pointsY[Random.Range(0, 2)], 0);
+        StartCoroutine(waitbegin());
     }
 
     // Update is called once per frame
@@ -35,27 +33,47 @@ public class WaitingAd : Advertisement
         {
             ChangeScale(false);
         }
+        scale = transform.localScale;
 
-
-        if (closeButton.GetComponent<CloseButton>().isClicked == true)
+        if (beginAd)
         {
-            StartCoroutine(waiter());
-        }
+            Destroy(instructions);
+            if (closeButton.GetComponent<CloseButton>().isClicked == true)
+            {
+                StartCoroutine(waiter());
+            }
 
-        if (movingAd)
-        {
-            MoveAd();
-        }
+            if (movingAd)
+            {
+                MoveAd();
+            }
 
-        if (scalingAd)
-        {
-            ScaleAd();
+            if (scalingAd)
+            {
+                ScaleAd();
+            }
         }
+    }
+
+    private void SpawnButton()
+    {
+        float[] pointsX = { -2.5f * scale.x, 2.5f * scale.x };
+        float[] pointsY = { -4f * scale.y, 4f * scale.y };
+
+        Vector3 originalPosition = closeButton.transform.position;
+        closeButton.transform.position = new Vector3(originalPosition.x + pointsX[Random.Range(0, 2)], originalPosition.y + pointsY[Random.Range(0, 2)], 0);
     }
 
     public override void CreateAd()
     {
         Instantiate(gameObject);
+    }
+
+    private IEnumerator waitbegin()
+    {
+        yield return new WaitForSeconds(1.5f);
+        beginAd = true;
+        SpawnButton();
     }
 
     protected override IEnumerator waiter()
