@@ -24,7 +24,7 @@ public class AdManager : MonoBehaviour
     void Start()
     {
         //Instantiate(waitingAd);
-
+        StartCoroutine(GracePeriod());
     }
 
     // Update is called once per frame

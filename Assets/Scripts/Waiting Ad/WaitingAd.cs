@@ -9,6 +9,8 @@ public class WaitingAd : Advertisement
     private Vector3 scale;
 
     public GameObject instructions;
+    public SpriteRenderer text;
+    private Vector3 textPosition;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -16,6 +18,8 @@ public class WaitingAd : Advertisement
         sprender = closeButton.GetComponent<SpriteRenderer>();
         scale = new Vector3(0.1f, 0.1f, 0.1f);
         transform.localScale = scale;
+        textPosition = text.transform.localPosition;
+        DisplaceText();
 
         StartCoroutine(waitbegin());
     }
@@ -34,6 +38,11 @@ public class WaitingAd : Advertisement
             ChangeScale(false);
         }
         scale = transform.localScale;
+
+        if (moveText && !beginAd)
+        {
+            MoveText();
+        }
 
         if (beginAd)
         {
@@ -69,9 +78,46 @@ public class WaitingAd : Advertisement
         Instantiate(gameObject);
     }
 
+    private void DisplaceText()
+    {
+        int i = Random.Range(0, 3);
+
+        switch (i)
+        {
+            case 0:
+                text.transform.position += new Vector3(0.6f, 0, 0);
+                break;
+            case 1:
+                text.transform.position += new Vector3(-0.6f, 0, 0);
+                break;
+            case 2:
+                text.transform.position += new Vector3(0, 0.2f, 0);
+                break;
+        }
+    }
+    private void MoveText()
+    {
+        if (text.transform.position.x > textPosition.x)
+        {
+            text.transform.position += new Vector3(-10f, 0, 0) * Time.deltaTime;
+        }
+
+        if (text.transform.position.x < textPosition.x)
+        {
+            text.transform.position += new Vector3(10f, 0, 0) * Time.deltaTime;
+        }
+
+        if (text.transform.localPosition.y > textPosition.y)
+        {
+            text.transform.position += new Vector3(0, -5f, 0) * Time.deltaTime;
+        }
+    }
+
     private IEnumerator waitbegin()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1.0f);
+        moveText = true;
+        yield return new WaitForSeconds(textTime);
         beginAd = true;
         SpawnButton();
     }

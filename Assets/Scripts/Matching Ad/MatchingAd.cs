@@ -13,6 +13,8 @@ public class MatchingAd : Advertisement
     private bool isAdDone = false;
 
     public GameObject instructions;
+    public SpriteRenderer text;
+    private Vector3 textPosition;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -21,6 +23,10 @@ public class MatchingAd : Advertisement
         transform.localScale = scale;
 
         complete = new List<bool> { false, false, false };
+
+        textPosition = text.transform.localPosition;
+        DisplaceText();
+
         StartCoroutine(waitbegin());
     }
 
@@ -39,6 +45,12 @@ public class MatchingAd : Advertisement
         }
 
         scale = transform.localScale;
+
+        if (moveText && !beginAd)
+        {
+            MoveText();
+        }
+
 
         if (beginAd)
         {
@@ -115,9 +127,46 @@ public class MatchingAd : Advertisement
         Instantiate(gameObject);
     }
 
+    private void DisplaceText()
+    {
+        int i = Random.Range(0, 3);
+
+        switch (i)
+        {
+            case 0:
+                text.transform.position += new Vector3(0.8f, 0, 0);
+                break;
+            case 1:
+                text.transform.position += new Vector3(-0.8f, 0, 0);
+                break;
+            case 2:
+                text.transform.position += new Vector3(0, 0.2f, 0);
+                break;
+        }
+    }
+    private void MoveText()
+    {
+        if (text.transform.position.x > textPosition.x)
+        {
+            text.transform.position += new Vector3(-10f, 0, 0) * Time.deltaTime;
+        }
+
+        if (text.transform.position.x < textPosition.x)
+        {
+            text.transform.position += new Vector3(10f, 0, 0) * Time.deltaTime;
+        }
+
+        if (text.transform.localPosition.y > textPosition.y)
+        {
+            text.transform.position += new Vector3(0, -5f, 0) * Time.deltaTime;
+        }
+    }
+
     private IEnumerator waitbegin()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1.0f);
+        moveText = true;
+        yield return new WaitForSeconds(textTime);
         beginAd = true;
         ChangeLocations();
     }

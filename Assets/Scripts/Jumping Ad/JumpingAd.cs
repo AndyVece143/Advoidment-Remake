@@ -26,6 +26,10 @@ public class JumpingAd : Advertisement
 
     public GameObject winScreen;
     public GameObject instructions;
+
+    public SpriteRenderer text;
+    private Vector3 textPosition;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -34,6 +38,8 @@ public class JumpingAd : Advertisement
         gravity = -9.8f * scale.y;
         jumpForce = 12f * (scale.y / 2.0f);
         winScreen.GetComponent<SpriteRenderer>().enabled = false;
+        textPosition = text.transform.localPosition;
+        DisplaceText();
 
         StartCoroutine(waitbegin());
     }
@@ -55,6 +61,11 @@ public class JumpingAd : Advertisement
         scale = transform.localScale;
         gravity = -9.8f * scale.y;
         jumpForce = 12f * (scale.y / 2.0f);
+
+        if (moveText && !beginAd)
+        {
+            MoveText();
+        }
 
         if (beginAd)
         {
@@ -142,7 +153,7 @@ public class JumpingAd : Advertisement
             {
                 if (isMoving)
                 {
-                    enemies[i].transform.position += new Vector3((enemySpeed * scale.x) * Time.deltaTime, 0, 0);
+                    enemies[i].transform.position += new Vector3((enemySpeed * scale.x), 0, 0) * Time.deltaTime;
                 }
 
                 if (enemies[i])
@@ -176,10 +187,48 @@ public class JumpingAd : Advertisement
         }
         SpawnEnemies();
     }
+    private void DisplaceText()
+    {
+        int i = Random.Range(0, 3);
+
+        switch (i)
+        {
+            case 0:
+                text.transform.position += new Vector3(0.8f, 0, 0);
+                break;
+            case 1:
+                text.transform.position += new Vector3(-0.8f, 0, 0);
+                break;
+            case 2:
+                text.transform.position += new Vector3(0, 0.2f, 0);
+                break;
+        }
+    }
+    private void MoveText()
+    {
+        if (text.transform.position.x > textPosition.x)
+        {
+            text.transform.position += new Vector3(-10f, 0, 0) * Time.deltaTime;
+        }
+
+        if (text.transform.position.x < textPosition.x)
+        {
+            text.transform.position += new Vector3(10f, 0, 0) * Time.deltaTime;
+        }
+
+        if (text.transform.localPosition.y > textPosition.y)
+        {
+            text.transform.position += new Vector3(0, -5f, 0) * Time.deltaTime;
+        }
+    }
+
+
 
     private IEnumerator waitbegin()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1.0f);
+        moveText = true;
+        yield return new WaitForSeconds(textTime);
         beginAd = true;
         SpawnEnemies();
     }

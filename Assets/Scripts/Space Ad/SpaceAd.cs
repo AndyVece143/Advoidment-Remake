@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 
 public class SpaceAd : Advertisement
 {
@@ -13,9 +14,12 @@ public class SpaceAd : Advertisement
     public List<GameObject> asteroids;
     public int asteroidNumber;
     public GameObject winScreen;
+    public float speed;
 
     public bool isDead = false;
     public GameObject instructions;
+    public SpriteRenderer text;
+    private Vector3 textPosition;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -27,6 +31,8 @@ public class SpaceAd : Advertisement
         winScreen.GetComponent<SpriteRenderer>().enabled = false;
         transform.localScale = scale;
         laserList = new List<GameObject>();
+        textPosition = text.transform.localPosition;
+        DisplaceText();
 
         StartCoroutine(waitbegin());
     }
@@ -45,6 +51,11 @@ public class SpaceAd : Advertisement
             ChangeScale(false);
         }
         scale = transform.localScale;
+
+        if (moveText && !beginAd)
+        {
+            MoveText();
+        }
 
         if (beginAd)
         {
@@ -116,7 +127,7 @@ public class SpaceAd : Advertisement
         {
             for (int i = 0; i < laserList.Count; i++)
             {
-                laserList[i].transform.position += laserList[i].transform.up * (0.01f * scale.x);
+                laserList[i].transform.position += (laserList[i].transform.up * (speed * scale.x)) * Time.deltaTime;
 
                 if (laserList[i].transform.localPosition.x >= 6 || laserList[i].transform.localPosition.x <= -6 || laserList[i].transform.localPosition.y >= 6 || laserList[i].transform.localPosition.y <= -6)
                 {
@@ -198,7 +209,7 @@ public class SpaceAd : Advertisement
             {
                 if (isDead == false)
                 {
-                    asteroids[i].transform.position += asteroids[i].transform.up * (0.001f * scale.x);
+                    asteroids[i].transform.position += (asteroids[i].transform.up * (speed/10 * scale.x)) * Time.deltaTime;
                 }
 
                 if (asteroids[i] && asteroids[i].GetComponent<Collider2D>().enabled == true)
@@ -289,9 +300,46 @@ public class SpaceAd : Advertisement
         SpawnAsteroids();
     }
 
+    private void DisplaceText()
+    {
+        int i = Random.Range(0, 3);
+
+        switch (i)
+        {
+            case 0:
+                text.transform.position += new Vector3(0.8f, 0, 0);
+                break;
+            case 1:
+                text.transform.position += new Vector3(-0.8f, 0, 0);
+                break;
+            case 2:
+                text.transform.position += new Vector3(0, 0.2f, 0);
+                break;
+        }
+    }
+    private void MoveText()
+    {
+        if (text.transform.position.x > textPosition.x)
+        {
+            text.transform.position += new Vector3(-10f, 0, 0) * Time.deltaTime;
+        }
+
+        if (text.transform.position.x < textPosition.x)
+        {
+            text.transform.position += new Vector3(10f, 0, 0) * Time.deltaTime;
+        }
+
+        if (text.transform.localPosition.y > textPosition.y)
+        {
+            text.transform.position += new Vector3(0, -5f, 0) * Time.deltaTime;
+        }
+    }
+
     private IEnumerator waitbegin()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1.0f);
+        moveText = true;
+        yield return new WaitForSeconds(textTime);
         beginAd = true;
         SpawnAsteroids();
     }

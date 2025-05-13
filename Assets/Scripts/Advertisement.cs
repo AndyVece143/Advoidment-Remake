@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public abstract class Advertisement : MonoBehaviour
 {
-    protected Vector3 scaleChange = new Vector3(0.01f, 0.01f, 0.01f);
+    protected Vector3 scaleChange = new Vector3(4f, 4f, 4f);
     public float xSpeed;
     public float ySpeed;
     public List<GameObject> bounds;
@@ -18,6 +18,8 @@ public abstract class Advertisement : MonoBehaviour
     public bool beginScale = false;
     private bool changeScale = false;
     public bool beginAd = false;
+    public bool moveText = false;
+    public float textTime = 1.5f;
     
     void Awake()
     {
@@ -42,29 +44,32 @@ public abstract class Advertisement : MonoBehaviour
     {
         if (rate == true)
         {
-            transform.localScale += scaleChange;
+            transform.localScale += scaleChange * Time.deltaTime;
         }
         else
         {
-            transform.localScale -= scaleChange;
+            transform.localScale -= scaleChange * Time.deltaTime;
         }
     }
 
     public void MoveAd()
     {
-        transform.position += new Vector3(xSpeed, ySpeed, 0);
+        transform.position += new Vector3(xSpeed, ySpeed, 0) * Time.deltaTime;
         BoundsCollision();
     }
 
     public void ScaleAd()
     {
-        StartCoroutine(ScaleWaitBeginning());
+        //StartCoroutine(ScaleWaitBeginning());
 
-        if (beginScale == true)
-        {
-            transform.localScale += new Vector3(scaleSpeedX, scaleSpeedY, 0);
-            ChangeScale();
-        }
+        //if (beginScale == true)
+        //{
+        //    transform.localScale += new Vector3(scaleSpeedX, scaleSpeedY, 0);
+        //    ChangeScale();
+        //}
+        beginScale = true;
+        transform.localScale += new Vector3(scaleSpeedX, scaleSpeedY, 0) * Time.deltaTime;
+        ChangeScale();
     }
 
     private void ChangeScale()
@@ -123,14 +128,14 @@ public abstract class Advertisement : MonoBehaviour
         if (tag == "LeftRightBounds")
         {
             LeftRightCheck = true;
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.1f);
             LeftRightCheck = false;
         }
 
         else
         {
             TopBottomCheck = true;
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.1f);
             TopBottomCheck = false;
         }
     }

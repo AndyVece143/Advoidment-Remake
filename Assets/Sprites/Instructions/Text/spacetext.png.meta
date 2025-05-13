@@ -1,0 +1,689 @@
+fileFormatVersion: 2
+guid: 20531dbaf88f71f4294bd5d3ea2551be
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2049835019742598367
+    second: spacetext_0
+  - first:
+      213: 9071897081305777868
+    second: spacetext_1
+  - first:
+      213: -1607227049368459164
+    second: spacetext_2
+  - first:
+      213: 1742944608213282970
+    second: spacetext_3
+  - first:
+      213: -5755740506162050801
+    second: spacetext_4
+  - first:
+      213: 1505724292910996088
+    second: spacetext_5
+  - first:
+      213: -503287995896432802
+    second: spacetext_6
+  - first:
+      213: -7646702676795508548
+    second: spacetext_7
+  - first:
+      213: 2195905736192788882
+    second: spacetext_8
+  - first:
+      213: 7067240851134295226
+    second: spacetext_9
+  - first:
+      213: 1092740119521202992
+    second: spacetext_10
+  - first:
+      213: 6656459997291769066
+    second: spacetext_11
+  - first:
+      213: -2025944264875317017
+    second: spacetext_12
+  - first:
+      213: -213613469772741165
+    second: spacetext_13
+  - first:
+      213: -2019390008242509973
+    second: spacetext_14
+  - first:
+      213: -8463550830113303229
+    second: spacetext_15
+  - first:
+      213: 5119478385237256907
+    second: spacetext_16
+  - first:
+      213: 7849563504153654622
+    second: spacetext_17
+  - first:
+      213: 3276951320921910753
+    second: spacetext_18
+  - first:
+      213: 5081259007752314201
+    second: spacetext_19
+  - first:
+      213: 4096741608657718565
+    second: spacetext_20
+  - first:
+      213: -4697750045372092825
+    second: spacetext_21
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: spacetext_0
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 82
+        width: 41
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd4d9e7071a727c10800000000000000
+      internalID: 2049835019742598367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spacetext_1
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 81
+        width: 34
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc6422a945ad5ed70800000000000000
+      internalID: 9071897081305777868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spacetext_2
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 81
+        width: 27
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4686ef8938bf1b9e0800000000000000
+      internalID: -1607227049368459164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spacetext_3
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 80
+        width: 38
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a903cbbf2ee203810800000000000000
+      internalID: 1742944608213282970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spacetext_4
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 81
+        width: 27
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f0942ee31808f10b0800000000000000
+      internalID: -5755740506162050801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spacetext_5
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 81
+        width: 34
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87ad2a8444865e410800000000000000
+      internalID: 1505724292910996088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spacetext_6
+      rect:
+        serializedVersion: 2
+        x: 435
+        y: 81
+        width: 34
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e57ffd8fb36f309f0800000000000000
+      internalID: -503287995896432802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spacetext_7
+      rect:
+        serializedVersion: 2
+        x: 552
+        y: 81
+        width: 27
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb8339eed6471e590800000000000000
+      internalID: -7646702676795508548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spacetext_8
+      rect:
+        serializedVersion: 2
+        x: 580
+        y: 81
+        width: 34
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2998306f1ac697e10800000000000000
+      internalID: 2195905736192788882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spacetext_9
+      rect:
+        serializedVersion: 2
+        x: 643
+        y: 80
+        width: 37
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: abc2df93c12e31260800000000000000
+      internalID: 7067240851134295226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spacetext_10
+      rect:
+        serializedVersion: 2
+        x: 684
+        y: 121
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03311ef59513a2f00800000000000000
+      internalID: 1092740119521202992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spacetext_11
+      rect:
+        serializedVersion: 2
+        x: 699
+        y: 81
+        width: 36
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aec6c20a91f706c50800000000000000
+      internalID: 6656459997291769066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spacetext_12
+      rect:
+        serializedVersion: 2
+        x: 772
+        y: 100
+        width: 12
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e8ed5dcc6662e3e0800000000000000
+      internalID: -2025944264875317017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spacetext_13
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 81
+        width: 28
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d505f65ea7190df0800000000000000
+      internalID: -213613469772741165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spacetext_14
+      rect:
+        serializedVersion: 2
+        x: 253
+        y: 82
+        width: 27
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b676bb79c7fa9f3e0800000000000000
+      internalID: -2019390008242509973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spacetext_15
+      rect:
+        serializedVersion: 2
+        x: 317
+        y: 66
+        width: 35
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34552a0ac5d6b8a80800000000000000
+      internalID: -8463550830113303229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spacetext_16
+      rect:
+        serializedVersion: 2
+        x: 487
+        y: 81
+        width: 33
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bca6b5b977a0c0740800000000000000
+      internalID: 5119478385237256907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spacetext_17
+      rect:
+        serializedVersion: 2
+        x: 523
+        y: 81
+        width: 28
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e55f2f21b604fec60800000000000000
+      internalID: 7849563504153654622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spacetext_18
+      rect:
+        serializedVersion: 2
+        x: 617
+        y: 82
+        width: 27
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ed2cc54dd11a7d20800000000000000
+      internalID: 3276951320921910753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spacetext_19
+      rect:
+        serializedVersion: 2
+        x: 683
+        y: 82
+        width: 12
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95d94d85522448640800000000000000
+      internalID: 5081259007752314201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spacetext_20
+      rect:
+        serializedVersion: 2
+        x: 738
+        y: 81
+        width: 28
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52d0b90a9cc8ad830800000000000000
+      internalID: 4096741608657718565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spacetext_21
+      rect:
+        serializedVersion: 2
+        x: 770
+        y: 82
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 76e6506393d3eceb0800000000000000
+      internalID: -4697750045372092825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      spacetext_0: 2049835019742598367
+      spacetext_1: 9071897081305777868
+      spacetext_10: 1092740119521202992
+      spacetext_11: 6656459997291769066
+      spacetext_12: -2025944264875317017
+      spacetext_13: -213613469772741165
+      spacetext_14: -2019390008242509973
+      spacetext_15: -8463550830113303229
+      spacetext_16: 5119478385237256907
+      spacetext_17: 7849563504153654622
+      spacetext_18: 3276951320921910753
+      spacetext_19: 5081259007752314201
+      spacetext_2: -1607227049368459164
+      spacetext_20: 4096741608657718565
+      spacetext_21: -4697750045372092825
+      spacetext_3: 1742944608213282970
+      spacetext_4: -5755740506162050801
+      spacetext_5: 1505724292910996088
+      spacetext_6: -503287995896432802
+      spacetext_7: -7646702676795508548
+      spacetext_8: 2195905736192788882
+      spacetext_9: 7067240851134295226
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

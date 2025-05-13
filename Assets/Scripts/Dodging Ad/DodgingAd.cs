@@ -18,6 +18,8 @@ public class DodgingAd : Advertisement
     public int enemySpeed;
     public GameObject referencePoint;
     public GameObject instructions;
+    public SpriteRenderer text;
+    private Vector3 textPosition;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -26,6 +28,8 @@ public class DodgingAd : Advertisement
         transform.localScale = scale;
         originalPosition = player.transform.position;
         winScreen.GetComponent<SpriteRenderer>().enabled = false;
+        textPosition = text.transform.position;
+        DisplaceText();
 
         StartCoroutine(waitbegin());
     }
@@ -46,6 +50,11 @@ public class DodgingAd : Advertisement
 
         scale = transform.localScale;
         originalPosition = referencePoint.transform.position;
+
+        if (moveText && beginAd == false)
+        {
+            MoveText();
+        }
 
         if (beginAd)
         {
@@ -129,7 +138,7 @@ public class DodgingAd : Advertisement
             {
                 if (isMoving)
                 {
-                    enemies[i].transform.position += new Vector3(0, (enemySpeed * scale.y) * Time.deltaTime, 0);
+                    enemies[i].transform.position += new Vector3(0, (enemySpeed * scale.y), 0) * Time.deltaTime;
                 }
 
                 if (enemies[i])
@@ -155,13 +164,51 @@ public class DodgingAd : Advertisement
         }
     }
 
+    private void DisplaceText()
+    {
+        int i = Random.Range(0, 3);
+
+        switch (i)
+        {
+            case 0:
+                text.transform.position += new Vector3(0.6f, 0, 0);
+                break;
+            case 1:
+                text.transform.position += new Vector3(-0.6f, 0, 0);
+                break;
+            case 2:
+                text.transform.position += new Vector3(0, 0.2f, 0);
+                break;
+        }
+    }
+
+    private void MoveText()
+    {
+        if (text.transform.position.x > 0)
+        {
+            text.transform.position += new Vector3(-10f, 0, 0) * Time.deltaTime;
+        }
+
+        if (text.transform.position.x < 0)
+        {
+            text.transform.position += new Vector3(10f, 0, 0) * Time.deltaTime;
+        }
+
+        if (text.transform.localPosition.y > 0.333)
+        {
+            text.transform.position += new Vector3(0, -5f, 0) * Time.deltaTime;
+        }
+    }
+
     public override void CreateAd()
     {
         Instantiate(gameObject);
     }
     private IEnumerator waitbegin()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1.0f);
+        moveText = true;
+        yield return new WaitForSeconds(textTime);
         beginAd = true;
         SpawnEnemies();
     }
