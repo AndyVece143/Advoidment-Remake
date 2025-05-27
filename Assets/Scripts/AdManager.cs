@@ -54,14 +54,15 @@ public class AdManager : MonoBehaviour
         if (clicking.click >= 20 && clicking.click < 100 && RandomNumber(0,2) == 1)
         {
             ad.movingAd = true;
-            ad.xSpeed = 0.0005f;
+            ad.xSpeed = 2f;
         }
 
         //Difficulty up 100% chance of moving ad
         if (clicking.click >= 100)
         {
             ad.movingAd = true;
-            ad.xSpeed = Random.Range(0.001f, 0.003f);
+            ad.xSpeed = Random.Range(0.5f, 4f);
+            ad.ySpeed = Random.Range(0.5f, 4f);
 
             //50% chance of negative values
             if (RandomNumber(0,2) == 1)
@@ -72,7 +73,6 @@ public class AdManager : MonoBehaviour
             {
                 ad.ySpeed *= -1;
             }
-            ad.ySpeed = Random.Range(0.0005f, 0.001f);
         }
 
         //Difficulty up, 50% chance of scaling ad

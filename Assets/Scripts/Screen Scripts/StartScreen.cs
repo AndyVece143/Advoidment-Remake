@@ -20,6 +20,11 @@ public class StartScreen : MonoBehaviour
         SceneManager.LoadScene("Main Game");
     }
 
+    public void HowToPlay()
+    {
+        SceneManager.LoadScene("How to Play");
+    }
+
     public void Quit()
     {
         Application.Quit();

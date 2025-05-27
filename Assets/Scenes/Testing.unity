@@ -575,7 +575,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7512353876249336867, guid: 021b83a0343c7f74a99b3a2272d54651, type: 3}
       propertyPath: ySpeed
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7512353876249336867, guid: 021b83a0343c7f74a99b3a2272d54651, type: 3}
       propertyPath: movingAd
@@ -583,7 +583,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7512353876249336867, guid: 021b83a0343c7f74a99b3a2272d54651, type: 3}
       propertyPath: scalingAd
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7512353876249336867, guid: 021b83a0343c7f74a99b3a2272d54651, type: 3}
       propertyPath: scaleSpeedX
