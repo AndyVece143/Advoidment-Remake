@@ -543,6 +543,7 @@ MonoBehaviour:
   - {fileID: 7512353876249336867, guid: 021b83a0343c7f74a99b3a2272d54651, type: 3}
   - {fileID: 1612268009140683325, guid: 16785b30e55fcc142bec9d4ece09859e, type: 3}
   - {fileID: 2784380001840816, guid: 1c7cd4cd0365a62498d9f4cbef6c5d1c, type: 3}
+  - {fileID: 7808345880525497458, guid: f6f12133b4390f6449156eda9fb64b12, type: 3}
   activeAds: []
   clicking: {fileID: 1482386332}
   maxAds: 1
