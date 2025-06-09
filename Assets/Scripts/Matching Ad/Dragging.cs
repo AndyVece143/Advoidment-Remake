@@ -27,24 +27,24 @@ public class Dragging : MonoBehaviour
             transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition) + offset;
         }
 
-        if (transform.localPosition.x >= 4)
+        if (transform.localPosition.x >= 3.9)
         {
-            transform.position = new Vector3(referencePoint.transform.position.x + (4 * advertisement.transform.localScale.x), transform.position.y, transform.position.z);
+            transform.position = new Vector3(referencePoint.transform.position.x + (3.9f * advertisement.transform.localScale.x), transform.position.y, transform.position.z);
         }
 
-        if (transform.localPosition.x <= -4)
+        if (transform.localPosition.x <= -3.9)
         {
-            transform.position = new Vector3(referencePoint.transform.position.x + (-4 * advertisement.transform.localScale.x), transform.position.y, transform.position.z);
+            transform.position = new Vector3(referencePoint.transform.position.x + (-3.9f * advertisement.transform.localScale.x), transform.position.y, transform.position.z);
         }
 
-        if (transform.localPosition.y >= 4)
+        if (transform.localPosition.y >= 3.9)
         {
-            transform.position = new Vector3(transform.position.x, referencePoint.transform.position.y + (4 * advertisement.transform.localScale.y), transform.position.z);
+            transform.position = new Vector3(transform.position.x, referencePoint.transform.position.y + (3.9f * advertisement.transform.localScale.y), transform.position.z);
         }
 
-        if (transform.localPosition.y <= -4)
+        if (transform.localPosition.y <= -3.9)
         {
-            transform.position = new Vector3(transform.position.x, referencePoint.transform.position.y + (-4 * advertisement.transform.localScale.y), transform.position.z);
+            transform.position = new Vector3(transform.position.x, referencePoint.transform.position.y + (-3.9f * advertisement.transform.localScale.y), transform.position.z);
         }
     }
 

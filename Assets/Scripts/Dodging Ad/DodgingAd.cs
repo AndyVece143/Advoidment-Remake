@@ -28,7 +28,7 @@ public class DodgingAd : Advertisement
         transform.localScale = scale;
         originalPosition = player.transform.position;
         winScreen.GetComponent<SpriteRenderer>().enabled = false;
-        textPosition = text.transform.position;
+        textPosition = text.transform.localPosition;
         DisplaceText();
 
         StartCoroutine(waitbegin());
@@ -83,13 +83,13 @@ public class DodgingAd : Advertisement
         {
             player.transform.position = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, player.transform.position.y, 0);
 
-            if (player.transform.localPosition.x >= 2.5f)
+            if (player.transform.localPosition.x >= 2.4f)
             {
-                player.transform.position = new Vector3(originalPosition.x + (2.5f * scale.x), player.transform.position.y, 0);
+                player.transform.position = new Vector3(originalPosition.x + (2.4f * scale.x), player.transform.position.y, 0);
             }
-            if (player.transform.localPosition.x <= -2.5f)
+            if (player.transform.localPosition.x <= -2.4f)
             {
-                player.transform.position = new Vector3(originalPosition.x + (-2.5f * scale.x), player.transform.position.y, 0);
+                player.transform.position = new Vector3(originalPosition.x + (-2.4f * scale.x), player.transform.position.y, 0);
             }
         }
     }
@@ -184,17 +184,17 @@ public class DodgingAd : Advertisement
 
     private void MoveText()
     {
-        if (text.transform.position.x > 0)
+        if (text.transform.position.x > textPosition.x)
         {
             text.transform.position += new Vector3(-10f, 0, 0) * Time.deltaTime;
         }
 
-        if (text.transform.position.x < 0)
+        if (text.transform.position.x < textPosition.x)
         {
             text.transform.position += new Vector3(10f, 0, 0) * Time.deltaTime;
         }
 
-        if (text.transform.localPosition.y > 0.333)
+        if (text.transform.localPosition.y > textPosition.y)
         {
             text.transform.position += new Vector3(0, -5f, 0) * Time.deltaTime;
         }

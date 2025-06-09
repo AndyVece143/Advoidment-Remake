@@ -173,7 +173,7 @@ public class StompingAd : Advertisement
 
             if (enemy.GetComponent<Collider2D>().bounds.Intersects(floor.GetComponent<Collider2D>().bounds))
             {
-                enemy.transform.position = new Vector3(enemy.transform.position.x, floor.transform.position.y + 0.75f * scale.y, 0);
+                enemy.transform.position = new Vector3(enemy.transform.position.x, floor.transform.position.y + 0.70f * scale.y, 0);
                 enemyGoingDown = false;
 
             }

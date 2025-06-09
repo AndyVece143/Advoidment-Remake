@@ -89,7 +89,7 @@ public class JumpingAd : Advertisement
         //Ground Collision
         if (player.GetComponent<Collider2D>().bounds.Intersects(ground.GetComponent<Collider2D>().bounds) && velocity <= 0)
         {
-            player.transform.position = new Vector2(player.transform.position.x, ground.transform.position.y + 1f * scale.y);
+            player.transform.position = new Vector2(player.transform.position.x, ground.transform.position.y + 0.95f * scale.y);
             velocity = 0;
             canJump = true;
         }
@@ -123,7 +123,7 @@ public class JumpingAd : Advertisement
     {
         enemies.Clear();
         float xPosition = 5f * scale.x;
-        float yPosition = ground.transform.position.y + 1 * scale.y;
+        float yPosition = ground.transform.position.y + 0.95f * scale.y;
 
         enemies = new List<GameObject>(enemyNumber);
 
