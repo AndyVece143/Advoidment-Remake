@@ -13,3 +13,6 @@ I did refer to the original code when developing the remake. Since I have improv
 
 ## What are the new additions?
 There will be a ton of new minigames. The original had six, while I am aiming for at least ten. I am also adding modifiers to the minigames, such as them moving around the screen and scaling constantly. All of the art assets will be new. There will also be music and sound effects.
+
+## What is the game made with?
+The game is being made in Unity 2D, version 60000.0.47f1. It's being coded with Visual Studio 2022. The art is made with Pixelorama, a free pixel art software made by Orama Interactive. Sound effects will be determined soon.
