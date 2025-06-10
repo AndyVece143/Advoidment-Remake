@@ -13,7 +13,6 @@ public class ShootingAd : Advertisement
     public GameObject rightWall;
     public GameObject laser;
     private List<GameObject> laserList;
-    public GameObject enemy;
     public List<GameObject> enemies;
     private bool canShoot = true;
     public GameObject instructions;

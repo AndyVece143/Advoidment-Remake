@@ -99,7 +99,7 @@ public class DodgingAd : Advertisement
         enemies.Clear();
         Debug.Log("Spawning enemies!");
         float yPosition = 30 * scale.y;
-        float[] points = { -1.25f * scale.x, 0, 1.25f * scale.x };
+        float[] points = { -1.9f * scale.x, 0, 1.9f * scale.x };
 
         enemies = new List<GameObject>(enemyNumber);
 

@@ -360,7 +360,7 @@ public class SpaceAd : Advertisement
     protected override IEnumerator waiterDeath()
     {
         isDead = true;
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(1f);
         Debug.Log("Restarting");
         DeleteEverything();
     }
