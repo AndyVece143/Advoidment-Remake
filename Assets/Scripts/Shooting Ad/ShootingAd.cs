@@ -18,6 +18,7 @@ public class ShootingAd : Advertisement
     public GameObject instructions;
     public SpriteRenderer text;
     private Vector3 textPosition;
+    public GameObject winScreen;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -26,6 +27,7 @@ public class ShootingAd : Advertisement
         transform.localScale = scale;
         laser.GetComponent<SpriteRenderer>().enabled = false;
         laserList = new List<GameObject>();
+        winScreen.GetComponent<SpriteRenderer>().enabled = false;
 
         textPosition = text.transform.localPosition;
         DisplaceText();
@@ -226,6 +228,7 @@ public class ShootingAd : Advertisement
     {
         movingAd = false;
         scalingAd = false;
+        winScreen.GetComponent<SpriteRenderer>().enabled = true;
         yield return new WaitForSeconds(1);
         isAdOver = true;
 

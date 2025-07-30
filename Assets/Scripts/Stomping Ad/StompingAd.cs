@@ -25,12 +25,15 @@ public class StompingAd : Advertisement
     public SpriteRenderer text;
     private Vector3 textPosition;
 
+    public GameObject winScreen;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         scale = new Vector3(0.1f, 0.1f, 0.1f);
         transform.localScale = scale;
         textPosition = text.transform.localPosition;
+        winScreen.GetComponent<SpriteRenderer>().enabled = false;
         DisplaceText();
 
         StartCoroutine(waitbegin());
@@ -242,6 +245,7 @@ public class StompingAd : Advertisement
     {
         movingAd = false;
         scalingAd = false;
+        winScreen.GetComponent<SpriteRenderer>().enabled = true;
         yield return new WaitForSeconds(1);
         isAdOver = true;
 

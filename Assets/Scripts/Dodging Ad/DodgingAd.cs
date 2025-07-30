@@ -8,7 +8,8 @@ public class DodgingAd : Advertisement
     public GameObject player;
     private Vector3 scale;
     private bool isAdOver = false;
-    private Vector3 originalPosition;
+    public Vector3 originalPosition;
+    public Vector3 playerOriginalPosition;
     public GameObject enemy;
     public List<GameObject> enemies;
     public int enemyNumber;
@@ -20,6 +21,7 @@ public class DodgingAd : Advertisement
     public GameObject instructions;
     public SpriteRenderer text;
     private Vector3 textPosition;
+    public Animator animator;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -27,6 +29,7 @@ public class DodgingAd : Advertisement
         scale = new Vector3(0.1f, 0.1f, 0.1f);
         transform.localScale = scale;
         originalPosition = player.transform.position;
+        playerOriginalPosition = player.transform.localPosition;
         winScreen.GetComponent<SpriteRenderer>().enabled = false;
         textPosition = text.transform.localPosition;
         DisplaceText();
@@ -81,24 +84,52 @@ public class DodgingAd : Advertisement
     {
         if (isMoving)
         {
-            player.transform.position = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, player.transform.position.y, 0);
+            if (enemies.Count > 0)
+            {
+                player.transform.position = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, player.transform.position.y, 0);
+                player.transform.rotation = new Quaternion(0, 0, 0, 0);
 
-            if (player.transform.localPosition.x >= 2.4f)
-            {
-                player.transform.position = new Vector3(originalPosition.x + (2.4f * scale.x), player.transform.position.y, 0);
+                if (player.transform.localPosition.x >= 2.4f)
+                {
+                    player.transform.position = new Vector3(originalPosition.x + (2.4f * scale.x), player.transform.position.y, 0);
+                }
+                if (player.transform.localPosition.x <= -2.4f)
+                {
+                    player.transform.position = new Vector3(originalPosition.x + (-2.4f * scale.x), player.transform.position.y, 0);
+                }
             }
-            if (player.transform.localPosition.x <= -2.4f)
+            else
             {
-                player.transform.position = new Vector3(originalPosition.x + (-2.4f * scale.x), player.transform.position.y, 0);
+                animator.SetBool("isWin", true);
             }
+
+        }
+        else
+        {
+            player.transform.position += new Vector3(4.0f, 10.0f, 0) * Time.deltaTime;
+            player.transform.Rotate(Vector3.forward * (180 * Time.deltaTime));
+          
+        }
+
+        if (isDead == false)
+        {
+            animator.SetBool("isHit", false);
+        }
+
+        else
+        {
+            animator.SetBool("isHit", true);
         }
     }
 
     private void SpawnEnemies()
     {
+        isMoving = true;
+        player.transform.position = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, (originalPosition.y - 3.2f) * scale.y ,0);
+
         enemies.Clear();
         Debug.Log("Spawning enemies!");
-        float yPosition = 30 * scale.y;
+        float yPosition = 45 * scale.y;
         float[] points = { -1.9f * scale.x, 0, 1.9f * scale.x };
 
         enemies = new List<GameObject>(enemyNumber);
@@ -114,11 +145,11 @@ public class DodgingAd : Advertisement
                 transform.position.x + points[Random.Range(0, 3)], transform.position.y + yPosition);
 
             enemies.Add(newEnemy);
-            yPosition -= (10F * scale.y);
+            yPosition -= (10f * scale.y);
         }
 
         isDead = false;
-        isMoving = true;
+
     }
 
     private void DeleteEnemies()
@@ -177,7 +208,7 @@ public class DodgingAd : Advertisement
                 text.transform.position += new Vector3(-0.6f, 0, 0);
                 break;
             case 2:
-                text.transform.position += new Vector3(0, 0.2f, 0);
+                text.transform.position += new Vector3(0, 0.4f, 0);
                 break;
         }
     }

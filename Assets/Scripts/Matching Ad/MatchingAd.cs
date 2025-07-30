@@ -16,6 +16,8 @@ public class MatchingAd : Advertisement
     public SpriteRenderer text;
     private Vector3 textPosition;
 
+    public GameObject winScreen;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -23,7 +25,7 @@ public class MatchingAd : Advertisement
         transform.localScale = scale;
 
         complete = new List<bool> { false, false, false };
-
+        winScreen.GetComponent<SpriteRenderer>().enabled = false;
         textPosition = text.transform.localPosition;
         DisplaceText();
 
@@ -140,7 +142,7 @@ public class MatchingAd : Advertisement
                 text.transform.position += new Vector3(-0.8f, 0, 0);
                 break;
             case 2:
-                text.transform.position += new Vector3(0, 0.2f, 0);
+                text.transform.position += new Vector3(0, 0.4f, 0);
                 break;
         }
     }
@@ -175,6 +177,7 @@ public class MatchingAd : Advertisement
         isAdDone = true;
         scalingAd = false;
         movingAd = false;
+        winScreen.GetComponent<SpriteRenderer>().enabled = true;
         yield return new WaitForSeconds(1);
         isAdOver = true;
 
